@@ -9,8 +9,8 @@ app.use(
 );
 
 app.get("/", (req: Request, res: Response) => res.send("it was get request"));
-app.post("/p", (req: Request, res: Response) =>
-  res.send({ data: "it was post request" })
+app.post("/", (req: Request, res: Response) =>
+  res.send({ data: `got post request as ${new Date().getTime()}` })
 );
 
 app.listen(port);
