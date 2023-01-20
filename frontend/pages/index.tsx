@@ -16,13 +16,29 @@ export default function Home() {
       <main className="font-bold flex flex-col justify-center items-center h-screen w-full">
         <input type="text" placeholder="email" />
         <input type="text" placeholder="password" />
-        <button
-          onClick={() => {
-            console.log("clicked");
-          }}
-        >
-          submit
-        </button>
+        <div className="flex gap-x-10">
+          <button
+            onClick={() => {
+              console.log("clicked");
+            }}
+          >
+            submit
+          </button>
+          <button
+            onClick={async () => {
+              const res = await fetch("http://localhost:3009/p", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              console.log(res);
+            }}
+          >
+            api
+          </button>
+        </div>
       </main>
     </>
   );
