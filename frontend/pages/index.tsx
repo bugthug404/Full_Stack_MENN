@@ -1,13 +1,18 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import { useGetAuth } from "./utils/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [apiData, setApiData] = useState<any>(null);
+  const userNameRef = React.useRef<HTMLInputElement>(null);
+  const passwordRef = React.useRef<HTMLInputElement>(null);
+
+  const auth = useGetAuth();
   return (
     <>
       <Head>
@@ -17,33 +22,37 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="bg-gray- 800 font-bold flex flex-col space-y-4 justify-center items-center h-screen w-full">
-        <input type="text" placeholder="email" />
-        <input type="text" placeholder="password" />
+        <input
+          type="text"
+          placeholder="email"
+          ref={userNameRef}
+          value="user"
+          className="pl-4 py-2 focus:outline-none bg-gray-100 rounded-xl"
+        />
+        <input
+          type="text"
+          placeholder="password"
+          value="password"
+          ref={passwordRef}
+          className="pl-4 py-2 focus:outline-none bg-gray-100 rounded-xl"
+        />
         <div className="flex gap-x-4 pt-2">
           <button
             className="bg-blue-100 px-6 py-2 rounded-xl active:bg-red-200"
             onClick={() => {
-              console.log("clicked");
+              const data = JSON.stringify({
+                username: userNameRef.current?.value,
+                password: passwordRef.current?.value,
+              });
+              auth.login(data);
             }}
           >
             Submit
           </button>
           <button
             className="bg-red-100 px-6 py-2 rounded-xl active:bg-red-200 "
-            onClick={async () => {
-              axios
-                .post("http://localhost:3009/", {
-                  method: "POST",
-                  mode: "cors",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                })
-                .then((res) => {
-                  console.log(".then res", res);
-                  setApiData(res.data.data);
-                })
-                .catch((err) => console.log("catch error : ", err));
+            onClick={() => {
+              auth.testApiCall(setApiData);
             }}
           >
             Api call
