@@ -40,11 +40,11 @@ export default function Home() {
           <button
             className="bg-blue-100 px-6 py-2 rounded-xl active:bg-red-200"
             onClick={() => {
-              const data = JSON.stringify({
+              const data = {
                 username: userNameRef.current?.value,
                 password: passwordRef.current?.value,
-              });
-              auth.login(data);
+              };
+              auth.login(data, setApiData);
             }}
           >
             Submit

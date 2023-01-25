@@ -1,5 +1,8 @@
 import express, { Request, Response } from "express";
 import Cors from "cors";
+import { signIn, signUp } from "./auth";
+import mongoose from "mongoose";
+
 const app = express();
 const port = 3009;
 app.use(
@@ -7,10 +10,22 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
+// add json middleware
+app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => res.send("it was get request"));
 app.post("/", (req: Request, res: Response) =>
   res.send({ data: `got post request as ${new Date().getTime()}` })
 );
 
-app.listen(port);
+app.post("/signup", signUp);
+app.post("/login", signIn);
+
+mongoose
+  .connect("mongodb+srv://admin:admin@learnapi.bz9ulhi.mongodb.net/test")
+  .then(() => {
+    console.log("connected to db");
+    app.listen(port);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
