@@ -36,17 +36,17 @@ export async function signUp(req: Request, res: Response) {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).send({ error: "Something went wrong" });
+      res.status(500).send({ error: err.message });
     });
 }
 
 export async function signIn(req: Request, res: Response) {
   const { email, password } = req.body;
 
-  User.findOne({ email })
+  User.findOne({ email: email })
     .then((exists) => {
       if (!exists) {
-        return res.status(400).send({ error: "User not registered with us!" });
+        return res.status(400).send({ error: exists });
       }
 
       bcrypt

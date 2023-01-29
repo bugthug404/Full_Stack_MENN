@@ -12,6 +12,10 @@ app.use(
 );
 // add json middleware
 app.use(express.json());
+app.use((req, res, next) => {
+  console.log(req.url);
+  next();
+});
 
 app.post("/", (req: Request, res: Response) =>
   res.send({ data: `got post request as ${new Date().getTime()}` })

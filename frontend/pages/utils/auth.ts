@@ -1,7 +1,7 @@
 import axios, { ResponseType } from "axios";
 
 export function useGetAuth() {
-  function login(data: any, setApiData: (data: any) => void) {
+  function login(data: any, setApiData?: (data: any) => void) {
     axios
       .post("http://localhost:3009/login", data, {
         headers: {
@@ -12,11 +12,30 @@ export function useGetAuth() {
       })
       .then(function (response: any) {
         console.log("login response", response);
-        setApiData(response.data?.data?.username ?? "no data");
+        setApiData && setApiData(response.data?.data?.username ?? "no data");
       })
       .catch(function (error: any) {
         console.log("login error", error);
-        setApiData(error);
+        setApiData && setApiData(error);
+      });
+  }
+
+  function signup(data: any, setApiData?: (data: any) => void) {
+    axios
+      .post("http://localhost:3009/signup", data, {
+        headers: {
+          mode: "cors",
+          "Content-Type": "application/json",
+          acccept: "application/json",
+        },
+      })
+      .then(function (response: any) {
+        console.log("login response", response);
+        setApiData && setApiData(response.data?.data?.username ?? "no data");
+      })
+      .catch(function (error: any) {
+        console.log("login error", error);
+        setApiData && setApiData(error);
       });
   }
 
@@ -35,5 +54,5 @@ export function useGetAuth() {
       .catch((err) => console.log("test catch error : ", err));
   }
 
-  return { login, testApiCall };
+  return { login, signup, testApiCall };
 }
