@@ -3,8 +3,9 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import React, { useState } from "react";
 import axios from "axios";
-import { useGetAuth } from "./utils/auth";
+import { useGetAuth } from "../utils/auth";
 import Header from "@/src/head";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,10 @@ export default function Home() {
         <div className="space-y-5 text-center">
           <p>Home</p>
           <p>
-            <a href="/signup">Sign up</a>
+            <Link href="/signup">Sign up</Link>
           </p>
           <p>
-            <a href="/signin">Sign in</a>
+            <Link href="/signin">Sign in</Link>
           </p>
         </div>
       </main>
