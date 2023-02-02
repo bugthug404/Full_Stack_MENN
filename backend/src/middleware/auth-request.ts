@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { SECRET_KEY } from "../utils/secret-key";
 
 export function authRequest(req: Request, res: Response, next: NextFunction) {
   console.log("authRequest() called");
@@ -9,7 +8,7 @@ export function authRequest(req: Request, res: Response, next: NextFunction) {
   try {
     let token = authHeader?.split(" ")[1];
     if (token && token !== "") {
-      const decodedToken = jwt.verify(token, SECRET_KEY);
+      const decodedToken = jwt.verify(token, process.env.SECRET_KEY!);
       console.log("decodedToken", decodedToken);
       if (decodedToken !== null) {
         console.log("authorized");
