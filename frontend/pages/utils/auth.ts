@@ -10,9 +10,9 @@ export function useGetAuth() {
           acccept: "application/json",
         },
       })
-      .then(function (response: any) {
-        console.log("login response", response);
-        setApiData && setApiData(response.data?.data?.username ?? "no data");
+      .then(function (response) {
+        console.log("login response token", response.data.token);
+        localStorage.setItem("userInfo", JSON.stringify(response.data));
       })
       .catch(function (error: any) {
         console.log("login error", error);
@@ -41,8 +41,7 @@ export function useGetAuth() {
 
   function testApiCall(setApiData: (data: any) => void) {
     axios
-      .post("http://localhost:3009/", {
-        mode: "cors",
+      .get("http://localhost:3009/", {
         headers: {
           "Content-Type": "application/json",
         },

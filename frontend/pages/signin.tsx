@@ -18,6 +18,9 @@ export default function SignIn() {
     <>
       <div className="bg-gray- 800 font-bold flex flex-col space-y-4 justify-center items-center h-screen w-full">
         <div className="flex flex-col space-y-2">
+          <div className="text-center text-3xl font-semibold mb-10">
+            Login Form
+          </div>
           <input
             type="text"
             placeholder="bob@mail.com"
@@ -33,10 +36,6 @@ export default function SignIn() {
             className="pl-4 py-2 focus:outline-none bg-gray-100 rounded-xl"
           />
         </div>
-
-        <p className="text-sm">
-          <a href="/signup">go to Sign up</a>
-        </p>
 
         <div className="flex gap-x-4 pt-2">
           <button
@@ -60,6 +59,9 @@ export default function SignIn() {
             Api call
           </button>
         </div>
+        <p className="text-sm">
+          <a href="/signup">go to Sign up</a>
+        </p>
       </div>
     </>
   );

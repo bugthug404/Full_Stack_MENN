@@ -21,14 +21,13 @@ export default function SignUp() {
       <div className="bg-gray- 800 font-bold flex flex-col space-y-4 justify-center items-center h-screen w-full">
         <div className="flex flex-col space-y-2">
           {/* convert above input to Input */}
+          <div className="text-center text-3xl font-semibold mb-10">
+            SignUp Form
+          </div>
           <Input placeholder="name" value="mr bob" Ref={userNameRef} />
           <Input placeholder="email" value="bob@mail.com" Ref={emailRef} />
           <Input placeholder="password" value="password" Ref={passwordRef} />
         </div>
-
-        <p className="text-sm">
-          <a href="/signin"> go to Sign in</a>
-        </p>
 
         <div className="flex gap-x-4 pt-2">
           <button
@@ -53,10 +52,9 @@ export default function SignUp() {
             Api call
           </button>
         </div>
-        {/* <div className="w-[400px] border border-black rounded-xl p-4 space-y-4">
-          <div>api response :</div>
-          <div>{apiData ?? "nothing"}</div>
-        </div> */}
+        <p className="text-sm">
+          <a href="/signin"> go to Sign in</a>
+        </p>
       </div>
     </>
   );
