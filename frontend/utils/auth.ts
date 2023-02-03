@@ -53,5 +53,8 @@ export function useGetAuth() {
       .catch((err) => console.log("test catch error : ", err));
   }
 
-  return { login, signup, testApiCall };
+  function logout() {
+    localStorage.removeItem("userInfo");
+  }
+  return { login, signup, testApiCall, logout };
 }

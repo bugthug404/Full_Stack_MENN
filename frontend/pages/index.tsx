@@ -19,13 +19,13 @@ export default function Home() {
     <>
       <main className="bg-gray- 800 font-bold flex flex-col space-y-4 justify-center items-center h-screen w-full">
         <div className="space-y-5 text-center">
-          <p>Home</p>
-          <p>
-            <Link href="/signup">Sign up</Link>
-          </p>
-          <p>
-            <Link href="/signin">Sign in</Link>
-          </p>
+          <div
+            onClick={() => {
+              auth.logout();
+            }}
+          >
+            logout
+          </div>
         </div>
       </main>
     </>
