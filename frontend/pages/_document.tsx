@@ -1,3 +1,4 @@
+import { Loader } from "@/components/loader";
 import Header from "@/src/head";
 import { Html, Head, Main, NextScript } from "next/document";
 
@@ -5,8 +6,9 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body>
+      <body className="relative">
         <Header />
+
         <Main />
         <NextScript />
       </body>

@@ -7,6 +7,7 @@ import { useGetAuth } from "../utils/auth";
 import Header from "@/src/head";
 import Input from "@/src/input";
 import Link from "next/link";
+import { Loader } from "@/components/loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
