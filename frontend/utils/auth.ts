@@ -61,6 +61,8 @@ export function useGetAuth() {
       .get(`${process.env.NEXT_PUBLIC_API}`, {
         headers: {
           "Content-Type": "application/json",
+          accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       })
       .then((res) => {
