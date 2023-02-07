@@ -16,6 +16,7 @@ export function useGetAuth() {
           mode: "cors",
           "Content-Type": "application/json",
           acccept: "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       })
       .then(function (response) {
@@ -41,6 +42,7 @@ export function useGetAuth() {
           mode: "cors",
           "Content-Type": "application/json",
           acccept: "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       })
       .then(function (response: any) {
