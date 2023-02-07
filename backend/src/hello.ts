@@ -11,7 +11,9 @@ const app = express();
 const port = process.env.PORT;
 app.use(
   Cors({
-    origin: "http://localhost:3000",
+    // allow to server to accept request from different origin
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
 );
 // add json middleware
