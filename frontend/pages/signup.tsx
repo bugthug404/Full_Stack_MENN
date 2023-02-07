@@ -48,7 +48,7 @@ export default function SignUp() {
           <button
             className="bg-red-100 px-6 py-2 rounded-xl active:bg-red-200 "
             onClick={() => {
-              auth.testApiCall(setApiData);
+              auth.testApiCall();
             }}
           >
             Api call
