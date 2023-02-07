@@ -2,7 +2,7 @@ import { loaderOpenState } from "@/utils/loader-open-state";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-export function Loader() {
+export function LoadingScreen() {
   const open = useRecoilValue(loaderOpenState);
 
   return (
@@ -15,5 +15,13 @@ export function Loader() {
         </div>
       )}
     </>
+  );
+}
+
+export function Loader() {
+  return (
+    <div className="w-full h-full flex justify-center items-center">
+      <div className="dots-bars-6"></div>
+    </div>
   );
 }

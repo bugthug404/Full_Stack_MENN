@@ -33,9 +33,11 @@ export function AuthProvider(props: { children: React.ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser, router.pathname]);
 
-  if (currentUser?.token) {
+  if (currentUser?.token && !proutes.includes(router.pathname)) {
+    return <>{props.children}</>;
+  } else if (!currentUser?.token && proutes.includes(router.pathname)) {
     return <>{props.children}</>;
   } else {
-    return <>{props.children}</>;
+    return <></>;
   }
 }

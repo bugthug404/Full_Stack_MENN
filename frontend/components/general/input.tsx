@@ -16,9 +16,14 @@ export default function Input({
       type="text"
       placeholder={placeholder}
       ref={Ref}
-      value={value}
+      defaultValue={value}
+      onChange={(e) => {
+        if (Ref.current?.value) {
+          Ref.current.value = e.target.value;
+        }
+      }} // to remove warning
       className={
-        "pl-4 py-2 focus:outline-none bg-gray-100 rounded-xl" + className
+        "pl-4 py-2 focus:outline-none bg-gray-100 rounded-xl " + className
       }
     />
   );

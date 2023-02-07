@@ -34,7 +34,7 @@ export function useGetAuth() {
       });
   }
 
-  function signup(data: any, setApiData?: (data: any) => void) {
+  function signup(data: any) {
     setLoader(true);
     axios
       .post(`${process.env.NEXT_PUBLIC_API}signup`, data, {
@@ -45,14 +45,13 @@ export function useGetAuth() {
           "Access-Control-Allow-Origin": "*",
         },
       })
-      .then(function (response: any) {
-        console.log("login response", response);
-        setApiData && setApiData(response.data?.data?.username ?? "no data");
+      .then((response) => {
         setLoader(false);
+        if (response.status === 201 && response.data?.token) {
+          router.push("/signin");
+        }
       })
-      .catch(function (error: any) {
-        console.log("login error", error);
-        setApiData && setApiData(error);
+      .catch((error) => {
         setLoader(false);
       });
   }

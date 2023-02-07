@@ -1,3 +1,4 @@
+import TweetCard from "@/components/twitter/tweet-card";
 import React, { useState } from "react";
 import { useGetAuth } from "../utils/auth";
 
@@ -7,6 +8,7 @@ export default function Home() {
     <>
       <main className="bg-gray- 800 font-bold flex flex-col space-y-4 justify-center items-center h-screen w-full">
         <div className="space-y-5 text-center">
+          <TweetCard />
           <div
             onClick={() => {
               auth.logout();

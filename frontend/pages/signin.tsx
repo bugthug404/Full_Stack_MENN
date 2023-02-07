@@ -2,6 +2,7 @@ import { Inter } from "@next/font/google";
 import React from "react";
 import { useGetAuth } from "../utils/auth";
 import Link from "next/link";
+import Input from "@/components/general/input";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,20 +18,12 @@ export default function SignIn() {
           <div className="text-center text-3xl font-semibold mb-10">
             Login Form
           </div>
-          <input
-            type="text"
+          <Input
             placeholder="bob@mail.com"
-            ref={userNameRef}
+            Ref={userNameRef}
             value="bob@mail.com"
-            className="pl-4 py-2 focus:outline-none bg-gray-100 rounded-xl"
           />
-          <input
-            type="text"
-            placeholder="password"
-            value="password"
-            ref={passwordRef}
-            className="pl-4 py-2 focus:outline-none bg-gray-100 rounded-xl"
-          />
+          <Input placeholder="password" value="password" Ref={passwordRef} />
         </div>
 
         <div className="flex gap-x-4 pt-2">

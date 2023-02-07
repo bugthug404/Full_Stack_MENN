@@ -1,5 +1,5 @@
-import { Loader } from "@/components/loader";
-import Header from "@/src/head";
+import { LoadingScreen } from "@/components/general/loader";
+import Header from "@/components/general/head";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {

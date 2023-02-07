@@ -4,10 +4,10 @@ import { Inter } from "@next/font/google";
 import React, { useState } from "react";
 import axios from "axios";
 import { useGetAuth } from "../utils/auth";
-import Header from "@/src/head";
-import Input from "@/src/input";
+import Header from "@/components/general/head";
+import Input from "@/components/general/input";
 import Link from "next/link";
-import { Loader } from "@/components/loader";
+import { LoadingScreen } from "@/components/general/loader";
 
 const inter = Inter({ subsets: ["latin"] });
 

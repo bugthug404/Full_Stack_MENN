@@ -1,5 +1,5 @@
-import { AuthProvider } from "@/components/auth-provider";
-import { Loader } from "@/components/loader";
+import { AuthProvider } from "@/components/general/auth-provider";
+import { LoadingScreen } from "@/components/general/loader";
 import "@/styles/globals.css";
 import "@/styles/loader.module.css";
 import type { AppProps } from "next/app";
@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <RecoilRoot>
-        <Loader />
+        <LoadingScreen />
         <AuthProvider>
           <Component {...pageProps} />;
         </AuthProvider>
