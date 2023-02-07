@@ -1,16 +1,11 @@
-import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import { useGetAuth } from "../utils/auth";
-import Header from "@/src/head";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function SignIn() {
-  const [apiData, setApiData] = useState<any>(null);
   const userNameRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
 
@@ -42,6 +37,7 @@ export default function SignIn() {
           <button
             className="bg-blue-100 px-6 py-2 rounded-xl active:bg-red-200"
             onClick={() => {
+              // setLoader(true);
               const data = {
                 email: userNameRef.current?.value,
                 password: passwordRef.current?.value,
@@ -54,7 +50,7 @@ export default function SignIn() {
           <button
             className="bg-red-100 px-6 py-2 rounded-xl active:bg-red-200 "
             onClick={() => {
-              auth.testApiCall(setApiData);
+              auth.testApiCall();
             }}
           >
             Api call

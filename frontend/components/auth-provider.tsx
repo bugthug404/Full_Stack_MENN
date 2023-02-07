@@ -6,40 +6,36 @@ import React, { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 export function AuthProvider(props: { children: React.ReactNode }) {
-  const pid = useRouter().route;
-  const [loaderOpen, setLoaderOpen] = useRecoilState(loaderOpenState);
+  const setLoaderOpen = useSetRecoilState(loaderOpenState);
   const [currentUser, setCurrentUser] = useRecoilState(loggedinUserState);
   const router = useRouter();
   const proutes = ["/signin", "/signup", "/forgot-password", "/reset-password"];
 
   useEffect(() => {
-    console.log("auth-provider.tsx useEffect");
+    console.log("AuthProvider useEffect", router.pathname);
+    setLoaderOpen(true);
     const isPublicRoute = proutes.includes(router.pathname);
-    console.log("isPublicRoute", isPublicRoute);
 
     if (!currentUser) {
       const data: UserInfo = JSON.parse(
         localStorage.getItem("userInfo") ?? "{}"
       );
-      console.log("setting current user");
       data?.token && setCurrentUser(data);
     }
     if (currentUser?.token && isPublicRoute) {
-      console.log("isPublicRoute", isPublicRoute);
       if (currentUser?.token) {
-        console.log("token", currentUser?.token);
         router.push("/");
       }
     } else if (!currentUser?.token && !isPublicRoute) {
-      console.log("token", currentUser?.token);
       router.push("/signin");
     }
+    setLoaderOpen(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+  }, [currentUser, router.pathname]);
+
   if (currentUser?.token) {
     return <>{props.children}</>;
   } else {
-    console.log("currentUser", currentUser);
     return <>{props.children}</>;
   }
 }
