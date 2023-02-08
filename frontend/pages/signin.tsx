@@ -13,7 +13,7 @@ export default function SignIn() {
   const auth = useGetAuth();
   return (
     <>
-      <div className="bg-gray- 800 font-bold flex flex-col space-y-4 justify-center items-center h-screen w-full">
+      <div className=" font-bold flex flex-col space-y-4 justify-center items-center h-screen w-full">
         <div className="flex flex-col space-y-2">
           <div className="text-center text-3xl font-semibold mb-10">
             Login Form

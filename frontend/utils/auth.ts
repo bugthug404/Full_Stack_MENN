@@ -57,7 +57,7 @@ export function useGetAuth() {
   }
 
   function testApiCall() {
-    setLoader(false);
+    setLoader(true);
     axios
       .get(`${process.env.NEXT_PUBLIC_API}`, {
         headers: {
