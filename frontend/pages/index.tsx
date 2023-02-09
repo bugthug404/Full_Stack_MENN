@@ -1,3 +1,4 @@
+import CreatePost from "@/components/home/create-post";
 import TweetCard from "@/components/twitter/tweet-card";
 import { useTweets } from "@/utils/tweets";
 import { Butterfly_Kids } from "@next/font/google";
@@ -11,23 +12,11 @@ export default function Home() {
   return (
     <main className="bg-gray- 800 font-bold flex flex-col space-y-4 justify-center items-center h-screen w-full">
       <div className="space-y-5 text-center flex flex-col items-center">
-        <TweetCard heading="234" />
-        <div
-          onClick={() => {
-            tweet.getUserTweets();
-          }}
-          className="font-semibold px-10 py-2 rounded-xl cursor-pointer select-none bg-zinc-200"
-        >
-          get
-        </div>
-        <div
-          onClick={() => {
-            tweet.createTweet();
-          }}
-          className="font-semibold px-10 py-2 rounded-xl cursor-pointer select-none bg-zinc-200"
-        >
-          post
-        </div>
+        <CreatePost />
+        {tweet.data?.data.map((tweet, index) => {
+          return <TweetCard heading="234" key={index} />;
+        })}
+
         <div
           onClick={() => {
             auth.logout();

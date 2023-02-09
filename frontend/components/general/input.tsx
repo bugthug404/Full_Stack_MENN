@@ -6,9 +6,9 @@ export default function Input({
   placeholder,
   className,
 }: {
-  Ref: React.RefObject<HTMLInputElement>;
-  value: string;
-  placeholder: string;
+  Ref?: React.RefObject<HTMLInputElement>;
+  value?: string;
+  placeholder?: string;
   className?: string;
 }) {
   return (
@@ -18,7 +18,7 @@ export default function Input({
       ref={Ref}
       defaultValue={value}
       onChange={(e) => {
-        if (Ref.current?.value) {
+        if (Ref?.current?.value) {
           Ref.current.value = e.target.value;
         }
       }} // to remove warning
