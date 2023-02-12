@@ -7,7 +7,15 @@ import mongoose from "mongoose";
 export async function getAllTweets(req: Request, res: Response) {
   //  validateRequest(req, res);
   authRequest(req, res, () => {
-    Tweet.find({ userId: new Types.ObjectId(req.body.decodedToken.userId) })
+    // limit to last 10 tweets
+    Tweet.find(
+      { userId: new Types.ObjectId(req.body.decodedToken.userId) },
+      null,
+      {
+        limit: 10,
+        sort: { createdAt: -1 },
+      }
+    )
       .then((data) => {
         res.status(200).send(data);
       })

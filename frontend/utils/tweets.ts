@@ -11,7 +11,7 @@ export function useTweets() {
   const [userTweets, setUserTweets] = useState([]);
   const setLoader = useSetRecoilState(loaderOpenState);
 
-  const { data } = useQuery("tweets", () =>
+  const { data, refetch } = useQuery("tweets", () =>
     axios.get<TweetModel[]>(`${process.env.NEXT_PUBLIC_API}tweets`, {
       headers: {
         "Content-Type": "application/json",
@@ -45,6 +45,7 @@ export function useTweets() {
       .then((res) => {
         setUserTweets(res.data);
         setLoader(false);
+        refetch();
       })
       .catch((err) => {
         console.log("erro.r", err);

@@ -9,12 +9,17 @@ export function AuthProvider(props: { children: React.ReactNode }) {
   const setLoaderOpen = useSetRecoilState(loaderOpenState);
   const [currentUser, setCurrentUser] = useRecoilState(loggedinUserState);
   const router = useRouter();
-  const proutes = ["/signin", "/signup", "/forgot-password", "/reset-password"];
+  const publicpath = [
+    "/signin",
+    "/signup",
+    "/forgot-password",
+    "/reset-password",
+  ];
 
   useEffect(() => {
     console.log("AuthProvider useEffect", router.pathname);
     setLoaderOpen(true);
-    const isPublicRoute = proutes.includes(router.pathname);
+    const isPublicRoute = publicpath.includes(router.pathname);
 
     if (!currentUser) {
       const data: UserInfo = JSON.parse(
@@ -24,7 +29,7 @@ export function AuthProvider(props: { children: React.ReactNode }) {
     }
     if (currentUser?.token && isPublicRoute) {
       if (currentUser?.token) {
-        router.push("/");
+        router.push("/home");
       }
     } else if (!currentUser?.token && !isPublicRoute) {
       router.push("/signin");
@@ -33,9 +38,9 @@ export function AuthProvider(props: { children: React.ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser, router.pathname]);
 
-  if (currentUser?.token && !proutes.includes(router.pathname)) {
+  if (currentUser?.token && !publicpath.includes(router.pathname)) {
     return <>{props.children}</>;
-  } else if (!currentUser?.token && proutes.includes(router.pathname)) {
+  } else if (!currentUser?.token && publicpath.includes(router.pathname)) {
     return <>{props.children}</>;
   } else {
     return <></>;

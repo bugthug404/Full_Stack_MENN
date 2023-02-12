@@ -4,7 +4,6 @@ import { Inter } from "@next/font/google";
 import React, { useState } from "react";
 import axios from "axios";
 import { useGetAuth } from "../utils/auth";
-import Header from "@/components/general/head";
 import Input from "@/components/general/input";
 import Link from "next/link";
 import { LoadingScreen } from "@/components/general/loader";

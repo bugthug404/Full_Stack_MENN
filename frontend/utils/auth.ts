@@ -8,6 +8,7 @@ export function useGetAuth() {
   const router = useRouter();
   const setLoader = useSetRecoilState(loaderOpenState);
   const setCurrentUser = useSetRecoilState(loggedinUserState);
+
   function login(data: any, setApiData?: (data: any) => void) {
     setLoader(true);
     axios

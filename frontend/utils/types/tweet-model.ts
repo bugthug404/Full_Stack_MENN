@@ -3,7 +3,7 @@ export interface TweetModel {
   title?: string;
   description?: string;
   userId?: string;
-  createdAt?: Date;
+  createdAt?: string;
   updatedAt?: Date;
   __v?: number;
 }

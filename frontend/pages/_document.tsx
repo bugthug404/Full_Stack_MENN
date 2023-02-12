@@ -1,5 +1,4 @@
 import { LoadingScreen } from "@/components/general/loader";
-import Header from "@/components/general/head";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -7,8 +6,6 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body className="relative">
-        <Header />
-
         <Main />
         <NextScript />
       </body>
