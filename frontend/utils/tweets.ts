@@ -8,11 +8,10 @@ import { useQuery } from "react-query";
 
 export function useTweets() {
   const user = useRecoilValue(loggedinUserState);
-  const [userTweets, setUserTweets] = useState([]);
   const setLoader = useSetRecoilState(loaderOpenState);
 
-  const { data, refetch } = useQuery("tweets", () =>
-    axios.get<TweetModel[]>(`${process.env.NEXT_PUBLIC_API}tweets`, {
+  const { data, refetch } = useQuery("tweetlist", () =>
+    axios.get<TweetModel[]>(`${process.env.NEXT_PUBLIC_API}tweets/list`, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -26,7 +25,7 @@ export function useTweets() {
     setLoader(true);
     axios
       .post(
-        `${process.env.NEXT_PUBLIC_API}tweets`,
+        `${process.env.NEXT_PUBLIC_API}tweets/create`,
         {
           tweet: {
             title: title,
@@ -43,7 +42,6 @@ export function useTweets() {
         }
       )
       .then((res) => {
-        setUserTweets(res.data);
         setLoader(false);
         refetch();
       })

@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Watermark />
           <LoadingScreen />
           <AuthProvider>
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
           </AuthProvider>
           {/* </ThemeProvider> */}
         </RecoilRoot>

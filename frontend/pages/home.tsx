@@ -16,9 +16,9 @@ export default function HomePage() {
   }, [tweet.data?.data]);
 
   return (
-    <main className="font-bold flex flex-col space-y-4 bg-background text-onBackground overflow-auto w-full">
+    <main className="flex flex-col w-full space-y-4 overflow-auto bg-background text-onBackground">
       <Header />
-      <div className="space-y-5 text-center flex flex-col items-center pt-20">
+      <div className="flex flex-col items-center pt-20 space-y-5 text-center ">
         <CreatePost />
         {list?.map((tweet, index) => {
           return <TweetCard tweet={tweet} key={index} />;

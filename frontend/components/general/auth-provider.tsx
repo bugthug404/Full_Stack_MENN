@@ -17,7 +17,7 @@ export function AuthProvider(props: { children: React.ReactNode }) {
   ];
 
   useEffect(() => {
-    console.log("AuthProvider useEffect", router.pathname);
+    // console.log("AuthProvider useEffect", router.pathname);
     setLoaderOpen(true);
     const isPublicRoute = publicpath.includes(router.pathname);
 

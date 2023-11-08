@@ -7,11 +7,11 @@ import { useRecoilValue } from "recoil";
 
 export default function TweetCard({ tweet }: { tweet: TweetModel }) {
   return (
-    <div className="w-[300px] border border-black rounded-xl pl-3 pr-2 py-2 space-y-2">
+    <div className="w-full max-w-sm py-2 pl-3 pr-2 space-y-2 border border-black rounded-xl">
       {/* <Loader /> */}
-      <div className="text-xl text-left">{tweet?.title}</div>
+      <div className="text-xl font-bold text-left">{tweet?.title}</div>
       <div className="text-left">{tweet?.description}</div>
-      <div className="text-left">
+      <div className="text-xs text-left opacity-50">
         {formatDate(new Date(tweet?.createdAt ?? ""))}
       </div>
     </div>

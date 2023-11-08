@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { User } from "./model/user";
+import { User } from "../model/user";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-var hash = require("pbkdf2-password")();
-var path = require("path");
-var session = require("express-session");
+// var hash = require("pbkdf2-password")();
+// var path = require("path");
+// var session = require("express-session");
 const SECRET_KEY = "123456789";
 
 export async function signUp(req: Request, res: Response) {

@@ -7,15 +7,12 @@ export default function Header() {
   const auth = useGetAuth();
 
   return (
-    <div className="fixed flex justify-between  px-8 py-4 bg-onBackground w-full">
+    <div className="fixed flex justify-between w-full px-8 py-4 bg-onBackground">
       {/* <Logo /> */}
-      <div className="flex text-background items-center space-x-4">
-        <div className="font-bold text-3xl mr-2">Scaptor API</div>
+      <div className="flex items-center space-x-4 text-background">
+        <div className="mr-2 text-3xl font-bold">Scaptor API</div>
         {/* <div>Home</div> */}
-        <Link
-          href="/docs"
-          className="no-underline hover:underline underline-offset-[20px] hover:underline-offset-4 transition-all ease-in-out duration-300"
-        >
+        <Link href="/docs" className="">
           Swagger docs
         </Link>
       </div>
@@ -24,7 +21,7 @@ export default function Header() {
           onClick={() => {
             auth.logout();
           }}
-          className="cursor-pointer text-xl font-bold text-onBackground"
+          className="text-xl font-bold cursor-pointer text-onBackground"
         >
           logout
         </Button>

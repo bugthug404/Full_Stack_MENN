@@ -23,7 +23,8 @@ export default function Input({
         }
       }} // to remove warning
       className={
-        "pl-4 py-2 focus:outline-none bg-gray-100 rounded-xl " + className
+        "pl-4 py-2 focus:outline-none bg-gray-100 rounded-xl font-bold" +
+        className
       }
     />
   );
