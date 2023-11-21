@@ -19,20 +19,22 @@ export function AuthProvider(props: { children: React.ReactNode }) {
   useEffect(() => {
     // console.log("AuthProvider useEffect", router.pathname);
     setLoaderOpen(true);
-    const isPublicRoute = publicpath.includes(router.pathname);
+    let isPublicRoute = publicpath.includes(router.pathname);
 
     if (!currentUser) {
       const data: UserInfo = JSON.parse(
         localStorage.getItem("userInfo") ?? "{}"
       );
       data?.token && setCurrentUser(data);
-    }
-    if (currentUser?.token && isPublicRoute) {
-      if (currentUser?.token) {
-        router.push("/home");
+    } else {
+      if (currentUser?.token && isPublicRoute) {
+        if (currentUser?.token) {
+          alert("You are already logged in" + isPublicRoute + router.pathname);
+          router.push("/home");
+        }
+      } else if (!currentUser?.token && !isPublicRoute) {
+        router.push("/signin");
       }
-    } else if (!currentUser?.token && !isPublicRoute) {
-      router.push("/signin");
     }
     setLoaderOpen(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps

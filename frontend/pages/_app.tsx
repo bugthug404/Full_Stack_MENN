@@ -12,6 +12,7 @@ import { RecoilRoot } from "recoil";
 // import "@scaptorcom/relic-ui-react/dist/index.css";
 // import { ThemeProvider } from "@/../relic-ui-react/dist";
 import Watermark from "@/components/general/watermark";
+import GlobalConfirmModal from "@/components/general/confirm-popup";
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
           {/* add class name to click through */}
           <Watermark />
           <LoadingScreen />
+          <GlobalConfirmModal />
           <AuthProvider>
             <Component {...pageProps} />
           </AuthProvider>

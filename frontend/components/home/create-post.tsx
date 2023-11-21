@@ -2,6 +2,11 @@ import { useTweets } from "@/utils/tweets";
 import React from "react";
 import Button from "../general/button";
 import Input from "../general/input";
+import { useAtomValue, useSetAtom } from "jotai";
+import {
+  globalModalOpenState,
+  windowConfirm,
+} from "../general/global-modal-state";
 
 export default function CreatePost() {
   const titleRef = React.useRef<HTMLInputElement>(null);
@@ -18,13 +23,15 @@ export default function CreatePost() {
         ref={descriptionRef}
       />
       <Button
-        onClick={() => {
-          if (titleRef.current?.value && descriptionRef.current?.value) {
-            tweet.createTweet(
-              titleRef.current?.value,
-              descriptionRef.current?.value
-            );
-          }
+        onClick={async () => {
+          const data = await windowConfirm("melkajfd");
+          alert(data);
+          // if (titleRef.current?.value && descriptionRef.current?.value) {
+          //   tweet.createTweet(
+          //     titleRef.current?.value,
+          //     descriptionRef.current?.value
+          //   );
+          // }
         }}
       >
         Post Tweet
